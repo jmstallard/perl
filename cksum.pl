@@ -1,0 +1,11 @@
+use Digest::MD5;
+use IO::File;
+
+my $chk = Digest::MD5->new();
+
+foreach my $file (@ARGV)
+{
+    $chk->addfile(IO::File->new($file));
+
+    print "$file -> ",$chk->hexdigest,"\n";
+}
